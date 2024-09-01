@@ -1,7 +1,10 @@
+import 'package:coffee_shop/coffe%20data/hive_database.dart';
 import 'package:coffee_shop/models/coffee.dart';
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
 
 class CoffeeShop extends ChangeNotifier {
+  HiveDatabase db = HiveDatabase();
   // coffe for sale list
   List<Coffee> _shop = [
     // black coffee
@@ -31,18 +34,31 @@ class CoffeeShop extends ChangeNotifier {
 
   // get coffee list
   List<Coffee> get coffeeShop => _shop;
+
   //get user cart
   List<Coffee> get cart => _cart;
 
   // add item to cart
   void addItemToCart(Coffee coffee) {
     _cart.add(coffee);
+    db.saveData(_cart);
     notifyListeners();
   }
 
   // remove item from cart
   void removeItemFromCart(Coffee coffee) {
     _cart.remove(coffee);
+    db.saveData(_cart);
     notifyListeners();
+  }
+
+  // prepare data to be displayed in cart
+  void prepareData() {
+    if (db.getData().isEmpty) {
+      _cart = [];
+    } else {
+      _cart = db.getData();
+      notifyListeners();
+    }
   }
 }

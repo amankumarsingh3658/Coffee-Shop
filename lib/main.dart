@@ -1,9 +1,16 @@
 import 'package:coffee_shop/coffe%20data/coffee_shop.dart';
 import 'package:coffee_shop/pages/home_page.dart';
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+
 import 'package:provider/provider.dart';
 
-void main() {
+void main() async {
+  // Initialize hive
+  await Hive.initFlutter();
+
+  // open a box
+  await Hive.openBox("CARTBOX");
   runApp(const MyApp());
 }
 

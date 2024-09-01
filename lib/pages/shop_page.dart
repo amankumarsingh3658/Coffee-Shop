@@ -1,3 +1,4 @@
+
 import 'package:coffee_shop/coffe%20data/coffee_shop.dart';
 import 'package:coffee_shop/components/coffee_tile.dart';
 import 'package:coffee_shop/components/toastMessage.dart';
@@ -35,28 +36,27 @@ class _ShopPageState extends State<ShopPage> {
                 Expanded(
                   child: Consumer<CoffeeShop>(
                     builder: (context, value, child) {
-                      return 
-                           ListView.builder(
-                              itemCount: value.coffeeShop.length,
-                              itemBuilder: (context, index) {
-                                // Get Individual Coffee
-                                Coffee eachCoffee = value.coffeeShop[index];
-                                return CoffeeTile(
-                                    icon: Icon(Icons.add),
-                                    coffee: eachCoffee,
-                                    onPressed: () {
-                                      if (value.cart.contains(eachCoffee)) {
-                                        showToastTessage(
-                                            "${eachCoffee.name} is Already Present in Cart");
-                                      } else {
-                                        Provider.of<CoffeeShop>(context,
-                                                listen: false)
-                                            .addItemToCart(eachCoffee);
-                                        showToastTessage(
-                                            "${eachCoffee.name} Added To cart");
-                                      }
-                                    });
-                              });
+                      return ListView.builder(
+                          itemCount: value.coffeeShop.length,
+                          itemBuilder: (context, index) {
+                            // Get Individual Coffee
+                            Coffee eachCoffee = value.coffeeShop[index];
+                            return CoffeeTile(
+                                icon: Icon(Icons.add),
+                                coffee: eachCoffee,
+                                onPressed: () {
+                                  if (value.cart.contains(eachCoffee)) {
+                                    showToastTessage(
+                                        "${eachCoffee.name} is Already Present in Cart");
+                                  } else {
+                                    Provider.of<CoffeeShop>(context,
+                                            listen: false)
+                                        .addItemToCart(eachCoffee);
+                                    showToastTessage(
+                                        "${eachCoffee.name} Added To cart");
+                                  }
+                                });
+                          });
                     },
                   ),
                 )

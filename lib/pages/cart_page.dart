@@ -1,4 +1,5 @@
 import 'package:coffee_shop/coffe%20data/coffee_shop.dart';
+import 'package:coffee_shop/coffe%20data/hive_database.dart';
 import 'package:coffee_shop/components/coffee_tile.dart';
 import 'package:coffee_shop/consts.dart';
 import 'package:coffee_shop/models/coffee.dart';
@@ -13,6 +14,12 @@ class CartPage extends StatefulWidget {
 }
 
 class _CartPageState extends State<CartPage> {
+  @override
+  void initState() {
+    super.initState();
+    Provider.of<CoffeeShop>(context, listen: false).prepareData();
+  }
+
   @override
   Widget build(BuildContext context) {
     // remove Item from Cart
