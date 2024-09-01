@@ -11,3 +11,4 @@ The Coffee Shop App is an aesthetic and minimal mobile application crafted using
 - **Persistent Cart Data**: Leveraging Hive for local storage, the app ensures that the user's cart data is saved, so even if the app is closed, the cart contents remain intact upon reopening.
 
 The minimalist design of the app ensures a clean and focused user interface, prioritizing functionality and user experience. Flutter's cross-platform capabilities combined with Hive's efficient local storage and Provider's state management result in a responsive, fast, and reliable application.
+zxfhgZ
